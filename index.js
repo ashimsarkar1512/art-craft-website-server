@@ -33,6 +33,13 @@ async function run() {
 
     const artCraftCollection=client.db('artCraftDB').collection('artCraft')
 
+
+    app.get('/addCraft',async(req,res)=>{
+      const cursor=artCraftCollection.find();
+      const result=await cursor.toArray();
+      res.send(result);
+    })
+
     app.post('/addCraft',async(req,res)=>{
       const addCraft=req.body
       console.log(addCraft);
